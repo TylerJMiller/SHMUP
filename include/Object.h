@@ -5,8 +5,7 @@
 class Object
 {
 public:
-	float x;
-	float y;
+	float x, y;
 	int spriteID;
 	float speed;
 	bool active;
