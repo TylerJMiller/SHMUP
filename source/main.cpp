@@ -4,7 +4,6 @@ int main( int argc, char* argv[] )
 {	
     Initialise(sWidth, sHeight, false, "shootmeup");
     SetBackgroundColour(SColour(0, 0, 0, 255));
-	totalTime += frameTime;
     //Game Loop
     do
     {
@@ -12,6 +11,7 @@ int main( int argc, char* argv[] )
 		Keys.Update();
 		Keys.Debug();
 		frameTime = GetDeltaTime();
+		totalTime += frameTime;
 		if (Keys.IsPressed(VK_ESCAPE))
 			Game.ChangeState(UNLOAD);
 		switch (Game.CurrentState)
@@ -50,7 +50,14 @@ int main( int argc, char* argv[] )
 
 void MainMenu()
 {
-	Game.ChangeState(LOADGAME);
+	if (totalTime < 5)
+	{
+		DrawString("VIDEO GAME SPLASH SCREEN", 0.25f * sWidth, 0.5f * sHeight, SColour(255, 255, 255, 255));
+	}
+	else 
+	{
+		Game.ChangeState(LOADGAME);
+	}
 }
 
 void LoadGame()
@@ -69,12 +76,12 @@ void LoadGame()
 	Player3.SetSpeed(300, 0, 0);
 	Player3.SetSprite(MakeSprite("./images/ship3.png", 31, 31, spriteCount));
 	Player3.SetKeys(VK_UP, VK_DOWN, VK_LEFT, VK_RIGHT, VK_SPACE);
-
-	Player4.SetPos(400, 100, 15);
+*/
+	Player4.SetPos(0.8f * sWidth, 100, 15);
 	Player4.SetSpeed(300, 0, 0);
 	Player4.SetSprite(MakeSprite("./images/ship4.png", 31, 31, spriteCount));
 	Player4.SetKeys(VK_NUMPAD8, VK_NUMPAD5, VK_NUMPAD4, VK_NUMPAD6, VK_SPACE);
-	*/
+	
 	Game.ChangeState(GAMEPLAY);
 }
 
@@ -84,15 +91,15 @@ void GamePlay()
 	/*
 	Player2.Update(Keys, sWidth, sHeight);
 	Player3.Update(Keys, sWidth, sHeight);
-	Player4.Update(Keys, sWidth, sHeight);
 	*/
+	Player4.Update(Keys, sWidth, sHeight);
 
 	Player1.Move(frameTime);
 	/*
 	Player2.Move(frameTime);
 	Player3.Move(frameTime);
-	Player4.Move(frameTime);
 	*/
+	Player4.Move(frameTime);
 }
 
 void GameDraw()
@@ -101,8 +108,8 @@ void GameDraw()
 	/*
 	Player2.Draw();
 	Player3.Draw();
-	Player4.Draw();
 	*/
+	Player4.Draw();
 }
 
 void HiScore()

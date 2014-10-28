@@ -8,6 +8,7 @@ class Ship : public Object
 private:
 	int bUp, bDown, bLeft, bRight, bFire, bType;
 public:
+	void Shoot();
 	void SetKeys(int aUp, int aDown, int aLeft, int aRight, int aFire);
 	void Update(KeyStater &aKeys, float aWidth, float aHeight);
 	Ship();

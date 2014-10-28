@@ -18,6 +18,8 @@ enum GAMESTATE
 	UNLOAD
 };
 
+float frameTime = 0, totalTime = 0;
+
 struct GameStateHandler
 {
 	GAMESTATE CurrentState, LastState;
@@ -32,6 +34,7 @@ struct GameStateHandler
 
 	void ChangeState(GAMESTATE aState)
 	{
+		totalTime = 0;
 		hasChanged = true;
 		LastState = CurrentState;
 		CurrentState = aState;
@@ -48,9 +51,13 @@ GameStateHandler Game(MAINMENU);
 int sWidth = 800;
 int sHeight = 600;
 int spriteCount = 0;
-float frameTime = 0, totalTime = 0;
 KeyStater Keys;
-Ship Player1/*, Player2, Player3, Player4*/;
+Ship Player1;
+/*
+Ship Player2;
+Ship Player3;
+*/
+Ship Player4;
 
 
 
