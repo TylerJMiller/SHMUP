@@ -16,7 +16,7 @@ public:
 	void SetSpeed(float as, float axdir, float aydir);
 	void SetSprite(int asprite);
 	void Move(float atime);
-	Point2D ForwardMove();
+	Point2D ForwardMove();	//RETURNS POSITION NEXT FRAME
 	void Draw();
 	Object();
 	~Object();

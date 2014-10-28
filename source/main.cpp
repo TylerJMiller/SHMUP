@@ -1,46 +1,20 @@
-﻿#include "AIE.h"
-#include "MyMaths.h"
-#include "KeyStater.h"
-#include <iostream>
-#include "Ship.h"
-#include <math.h>
-#include "Improv.h"
-
-int sWidth = 800;
-int sHeight = 600;
-int spriteCount = 0;
-float frameTime = 0;
-KeyStater Keys;
-Ship Player1/*, Player2, Player3, Player4*/;
-
-enum GAMESTATE
-{
-	MAINMENU,
-	LOADGAME,
-	GAMEPLAY,
-	HISCORE,
-	QUIT,
-	UNLOAD
-};
-
-GAMESTATE CurrentState = LOADGAME;
-
-void InitializeGame(), MainMenu(), LoadGame(), GameUpdate(), GameDraw(), HiScore(), QuitGame(), Unload();
+﻿#include "Improv.h"
 
 int main( int argc, char* argv[] )
 {	
     Initialise(sWidth, sHeight, false, "shootmeup");
     SetBackgroundColour(SColour(0, 0, 0, 255));
-	
+	totalTime += frameTime;
     //Game Loop
     do
     {
+		Game.Update();
 		Keys.Update();
 		Keys.Debug();
 		frameTime = GetDeltaTime();
 		if (Keys.IsPressed(VK_ESCAPE))
-			CurrentState = UNLOAD;
-		switch (CurrentState)
+			Game.ChangeState(UNLOAD);
+		switch (Game.CurrentState)
 		{
 		case MAINMENU:
 			MainMenu();
@@ -49,24 +23,24 @@ int main( int argc, char* argv[] )
 			LoadGame();
 			break;
 		case GAMEPLAY:
-			GameUpdate();
+			GamePlay();
 			GameDraw();
 			break;
 		case HISCORE:
 			HiScore();
 			break;
 		case QUIT:
-			QuitGame();
+			Quit();
 			break;
 		case UNLOAD:
 			Unload();
 			return 0;
 			break;
 		default:
-			break;
-		}
+			Game.ChangeState(UNLOAD);
+				break;
+	}
         ClearScreen();
-
     } while(!FrameworkUpdate());
 
     Shutdown();
@@ -76,7 +50,7 @@ int main( int argc, char* argv[] )
 
 void MainMenu()
 {
-
+	Game.ChangeState(LOADGAME);
 }
 
 void LoadGame()
@@ -101,10 +75,10 @@ void LoadGame()
 	Player4.SetSprite(MakeSprite("./images/ship4.png", 31, 31, spriteCount));
 	Player4.SetKeys(VK_NUMPAD8, VK_NUMPAD5, VK_NUMPAD4, VK_NUMPAD6, VK_SPACE);
 	*/
-	CurrentState = GAMEPLAY;
+	Game.ChangeState(GAMEPLAY);
 }
 
-void GameUpdate()
+void GamePlay()
 {
 	Player1.Update(Keys, sWidth, sHeight);
 	/*
@@ -136,7 +110,7 @@ void HiScore()
 
 }
 
-void QuitGame()
+void Quit()
 {
 
 }
