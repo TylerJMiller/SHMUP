@@ -5,12 +5,11 @@
 class Object
 {
 public:
-	float x, y;
+	float x, y, r;
 	int spriteID;
 	float speed;
 	bool active;
 	Vector2D dir;
-	Circle collision;
 
 	void SetPos(float ax, float ay, float ar);
 	void SetSpeed(float as, float axdir, float aydir);

@@ -2,6 +2,7 @@
 
 Ship::Ship()
 {
+	active = true;
 }
 void Ship::SetKeys(int aUp, int aDown, int aLeft, int aRight, int aFire)
 {

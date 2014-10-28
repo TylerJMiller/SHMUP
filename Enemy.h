@@ -4,6 +4,7 @@
 class Enemy : public Object
 {
 public:
+	void Update(float aWidth, float aHeight);
 	Enemy();
 	~Enemy();
 };

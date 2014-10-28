@@ -97,6 +97,8 @@ bool CheckPointBox(Point2D p, Box b);		//POINT-BOX COLLISION
 
 bool CheckCircleCircle(Circle a, Circle b);
 
+bool CheckCircleCircle(float ax, float ay, float ar, float bx, float by, float br);
+
 bool CheckLineLine(Line l1, Line l2);				//NOT DONE YET BECAUSE NOT DONE YET
 
 bool CheckBoxBox(Box b1, Box b2);		//BOX-BOX COLLISION - ONLY CHECKS POINTS NOT LINES

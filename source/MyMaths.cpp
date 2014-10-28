@@ -198,10 +198,6 @@ bool CheckLineLine(Line l1, Line l2)				//NOT DONE YET BECAUSE NOT DONE YET
 	return false;
 }
 
-bool CheckCircleCircle(Circle a, Circle b)
-{
-	return (a.r + b.r) > sqrt((a.x * b.x) + (a.y * b.y));
-}
 
 bool IsWithin(float anum, float amin, float amax)
 {
@@ -224,5 +220,16 @@ float Distance(Point2D a, Point2D b)
 
 float Distance(float ax, float ay, float bx, float by)
 {
-	return (((bx - ax) * (bx - ax)) + ((by - ay) * (by - ay)));
+	return sqrt(((bx - ax) * (bx - ax)) + ((by - ay) * (by - ay)));
+}
+
+
+bool CheckCircleCircle(Circle a, Circle b)
+{
+	return (a.r + b.r) > Distance(a.x, a.y, b.x, b.y);
+}
+
+bool CheckCircleCircle(float ax, float ay, float ar, float bx, float by, float br)
+{
+	return (ar + br) > Distance(ax, ay, bx, by);
 }

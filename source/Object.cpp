@@ -12,9 +12,7 @@ void Object::SetPos(float ax, float ay, float ar)
 {
 	x = ax;
 	y = ay;
-	collision.x = ax;
-	collision.y = ay;
-	collision.r = ar;
+	r = ar;
 }
 
 void Object::SetSpeed(float as, float axdir, float aydir)
@@ -26,7 +24,6 @@ void Object::SetSpeed(float as, float axdir, float aydir)
 void Object::SetSprite(int asprite)
 {
 	spriteID = asprite;
-	active = true;
 }
 
 void Object::Move(float atime)
