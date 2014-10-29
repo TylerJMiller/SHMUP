@@ -20,7 +20,8 @@ enum GAMESTATE
 	UNLOAD
 };
 
-float frameTime = 0, totalTime = 0;
+float frameTime = 0;
+float totalTime = 0;
 
 struct GameStateHandler
 {
@@ -55,14 +56,14 @@ int sWidth = 800;
 int sHeight = 600;
 int spriteCount = 0;
 
-const int slaserCount = 500;
+const int splasmaCount = 500;
 int fireTime = 0;
 
 const int alienCount = 5;
 
 KeyStater Keys;
 Ship Player1;
-Bullet SLaser[slaserCount];
+Bullet SPlasma[splasmaCount];
 Enemy Alien[alienCount];
 /*
 Ship Player2;
@@ -110,38 +111,41 @@ int MakeSprite(char *atext, int awidth, int aheight, int &asprites)
 
 int GetNextBullet()
 {
-	for (int i = 0; i < slaserCount; i++)
+	for (int i = 0; i < splasmaCount; i++)
 	{
-		if (!SLaser[i].active)
+		if (!SPlasma[i].active)
 			return i;
 	}
 	return -1;
 }
 
-void Shoot()
+bool Shoot()
 {
 	if (fireTime > 0)
 		fireTime -= frameTime;
 	if ((Keys.IsPressed(VK_SPACE) || Keys.IsDown(VK_SPACE)) && fireTime == 0)
 	{
-		fireTime = 0.2; 
-		SLaser[GetNextBullet()].x = Player1.x;
-		SLaser[GetNextBullet()].y = Player1.y;
-		SLaser[GetNextBullet()].active = true;
+		fireTime = 1.5; 
+		if (GetNextBullet() == -1)
+			return false;
+		SPlasma[GetNextBullet()].x = Player1.x;
+		SPlasma[GetNextBullet()].y = Player1.y;
+		SPlasma[GetNextBullet()].active = true;
 	}
+	return true;
 }
 
-void AlienSLaserCollision()
+void AlienSPlasmaCollision()
 {
-	for (int i = 0; i < slaserCount; i++)
+	for (int i = 0; i < splasmaCount; i++)
 	{
-		if (SLaser[i].active)
+		if (SPlasma[i].active)
 		{
 			for (int ii = 0; ii < alienCount; ii++)
 			{
 				if (Alien[ii].active)
 				{
-					if (CheckCircleCircle(Alien[ii].x, Alien[ii].y, Alien[ii].r, SLaser[i].x, SLaser[i].y, SLaser[i].r))
+					if (CheckCircleCircle(Alien[ii].x, Alien[ii].y, Alien[ii].r, SPlasma[i].x, SPlasma[i].y, SPlasma[i].r))
 						Alien[ii].active = false;
 				}
 			}

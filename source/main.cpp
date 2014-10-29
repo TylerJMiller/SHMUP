@@ -11,11 +11,11 @@ int main( int argc, char* argv[] )
 		Keys.Update();
 		Keys.Debug();
 		frameTime = GetDeltaTime();
-		//frameTime = 1/60;
+		//frameTime = (1.f/200);
 		totalTime += frameTime;
 		if (Keys.IsPressed(VK_ESCAPE))
 			Game.ChangeState(UNLOAD);
-
+		
 		if (Keys.IsPressed(VK_P))
 			pause = !pause;
 
@@ -86,6 +86,7 @@ void LoadGame()
 	Player3.SetSpeed(300, 0, 0);
 	Player3.SetSprite(MakeSprite("./images/ship3.png", 31, 31, spriteCount));
 	Player3.SetKeys(VK_UP, VK_DOWN, VK_LEFT, VK_RIGHT, VK_SPACE);
+
 	Player4.SetPos(0.8f * sWidth, 100, 15);
 	Player4.SetSpeed(300, 0, 0);
 	Player4.SetSprite(MakeSprite("./images/ship4.png", 31, 31, spriteCount));
@@ -99,11 +100,11 @@ void LoadGame()
 		Alien[i].SetSprite(MakeSprite("./images/alien.png", 31, 31, spriteCount));
 	}
 
-	for (int i = 0; i < slaserCount; i++)
+	for (int i = 0; i < splasmaCount; i++)
 	{
-		SLaser[i].SetPos(-100, -100, 6);
-		SLaser[i].SetSpeed(600, 0, 1);
-		SLaser[i].SetSprite(MakeSprite("./images/slaser.png", 4, 12, spriteCount));
+		SPlasma[i].SetPos(-100, -100, 6);
+		SPlasma[i].SetSpeed(600, 0, 1);
+		SPlasma[i].SetSprite(MakeSprite("./images/splasma.png", 4, 12, spriteCount));
 	}
 
 	Game.ChangeState(GAMEPLAY);
@@ -125,13 +126,13 @@ void GamePlay()
 			Alien[i].Update(sWidth, sHeight);		//ALIEN ARRAY UPDATE
 		}
 
-		for (int i = 0; i < slaserCount; i++)
+		for (int i = 0; i < splasmaCount; i++)
 		{
-			SLaser[i].Update(sWidth, sHeight);
+			SPlasma[i].Update(sWidth, sHeight);
 		}
 
 		Shoot();
-		AlienSLaserCollision();
+		AlienSPlasmaCollision();
 		AlienPlayerCollision();
 		if (!AlienActiveCheck())
 			Game.ChangeState(UNLOAD);
@@ -143,9 +144,9 @@ void GamePlay()
 		Player4.Move(frameTime);
 		*/
 
-		for (int i = 0; i < slaserCount; i++)
+		for (int i = 0; i < splasmaCount; i++)
 		{
-			SLaser[i].Move(frameTime);
+			SPlasma[i].Move(frameTime);
 		}
 
 		for (int i = 0; i < alienCount; i++)
@@ -167,9 +168,9 @@ void GameDraw()
 	{	
 		Alien[i].Draw();						//ALIEN ARRAY DRAW
 	}
-	for (int i = 0; i < slaserCount; i++)
+	for (int i = 0; i < splasmaCount; i++)
 	{
-		SLaser[i].Draw();
+		SPlasma[i].Draw();
 	}
 }
 

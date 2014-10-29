@@ -5,7 +5,7 @@ void Bullet::Update(float aWidth, float aHeight)
 {
 	if (active)
 	{
-		if ((y + 50) > aHeight)
+		if (y > aHeight + 50)
 			active = false;
 	}
 }
