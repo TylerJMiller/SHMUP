@@ -59,7 +59,10 @@ int spriteCount = 0;
 const int splasmaCount = 500;
 int fireTime = 0;
 
+int s1Lives = 3;
+
 const int alienCount = 5;
+int alienMark = alienCount;
 
 KeyStater Keys;
 Ship Player1;
@@ -77,7 +80,16 @@ void AlienPlayerCollision()
 	{
 		if (CheckCircleCircle(Player1.x, Player1.y, Player1.r, Alien[i].x, Alien[i].y, Alien[i].r))															//FIX THIS SHIT
 		{
-			Alien[i].active = false;
+			for (int i = 0; i < alienCount; i++)
+			{
+				Alien[i].active = true;
+				Alien[i].SetPos((i + 3) * 0.1f * sWidth, 0.9f * sHeight, 15);
+			}
+				alienMark = alienCount;
+				Player1.SetPos(100, 100, 15);
+				s1Lives--;
+				if (s1Lives == 0)
+					totalTime = 0;
 		}
 	}
 }
@@ -93,6 +105,7 @@ bool AlienActiveCheck()
 	}
 	if (a == 0)
 		return false;
+	alienMark = a;
 	return true;
 }
 
@@ -135,6 +148,7 @@ bool Shoot()
 	return true;
 }
 
+
 void AlienSPlasmaCollision()
 {
 	for (int i = 0; i < splasmaCount; i++)
@@ -146,11 +160,26 @@ void AlienSPlasmaCollision()
 				if (Alien[ii].active)
 				{
 					if (CheckCircleCircle(Alien[ii].x, Alien[ii].y, Alien[ii].r, SPlasma[i].x, SPlasma[i].y, SPlasma[i].r))
+					{
+						alienMark--;
+						if (alienMark == 0)
+							totalTime = 0;
 						Alien[ii].active = false;
+					}
 				}
 			}
 		}
 	}
 }
+void DrawUI()
+{
+	char a[10], b[10];
+	itoa(alienMark, a, 10);
+	itoa(alienCount, b, 10);
+	strcat(a, "/");
+	strcat(a, b);
+	DrawString(a, 0.1f * sWidth, 0.9f * sHeight, SColour(255, 255, 255, 255));
+	itoa(s1Lives, a, 10);
 
+}
 #endif
