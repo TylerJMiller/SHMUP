@@ -1,29 +1,45 @@
-﻿Build started 10/29/2014 12:27:41 PM.
+﻿Build started 11/3/2014 2:26:32 PM.
      1>Project "C:\Users\tyler.miller\Desktop\SHMUP\AIE Template.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I./ /I./include/ /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"obj\\" /Fd"obj\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt source\main.cpp
          main.cpp
-     1>c:\users\tyler.miller\desktop\shmup\improv.h(138): warning C4244: '-=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\improv.h(141): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\improv.h(177): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
-     1>c:\users\tyler.miller\desktop\shmup\improv.h(178): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
-     1>c:\users\tyler.miller\desktop\shmup\improv.h(179): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(146): warning C4244: '-=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(149): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(195): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(481) : see declaration of '_itoa'
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(196): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(481) : see declaration of '_itoa'
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(197): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(118) : see declaration of 'strcat'
-     1>c:\users\tyler.miller\desktop\shmup\improv.h(180): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(198): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(118) : see declaration of 'strcat'
-     1>c:\users\tyler.miller\desktop\shmup\improv.h(181): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\improv.h(182): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(66): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(70): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(78): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(138): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(149): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(158): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(167): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(172): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(199): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(200): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(481) : see declaration of '_itoa'
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(201): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(201): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(481) : see declaration of '_itoa'
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(209): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(209): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(481) : see declaration of '_itoa'
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(210): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(215): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(250): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\improv.h(261): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(73): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(83): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(91): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(95): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(174): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(177): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(180): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(194): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(195): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(207): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(216): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(221): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(272): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(274): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"bin\AIE Template_d.exe" /INCREMENTAL /NOLOGO /LIBPATH:./libs AIE_1st_Year_Framework_d.lib kernel32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"bin\AIE Template_d.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"bin\AIE Template_d.lib" /MACHINE:X86 obj\Bullet.obj
          obj\Enemy.obj
@@ -65,4 +81,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.02
+Time Elapsed 00:00:01.65

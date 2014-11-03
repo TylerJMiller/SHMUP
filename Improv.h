@@ -9,11 +9,17 @@
 #include <math.h>
 #include "Enemy.h"
 #include "Bullet.h"
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 enum GAMESTATE
 {
+	SPLASHSCREEN,
 	MAINMENU,
 	LOADGAME,
+	RELOADGAME,
 	GAMEPLAY,
 	HISCORE,
 	QUIT,
@@ -49,9 +55,10 @@ struct GameStateHandler
 	}
 };
 
-GameStateHandler Game(MAINMENU);
+GameStateHandler Game(SPLASHSCREEN);
 
 bool pause = false;
+bool newHi = false;
 int sWidth = 800;
 int sHeight = 600;
 int spriteCount = 0;
@@ -68,6 +75,7 @@ KeyStater Keys;
 Ship Player1;
 Bullet SPlasma[splasmaCount];
 Enemy Alien[alienCount];
+
 /*
 Ship Player2;
 Ship Player3;
@@ -78,7 +86,7 @@ void AlienPlayerCollision()
 {
 	for (int i = 0; i < alienCount; i++)
 	{
-		if (CheckCircleCircle(Player1.x, Player1.y, Player1.r, Alien[i].x, Alien[i].y, Alien[i].r))															//FIX THIS SHIT
+		if (CheckCircleCircle(Player1.x, Player1.y, Player1.r, Alien[i].x, Alien[i].y, Alien[i].r) && Alien[i].active)															//FIX THIS SHIT
 		{
 			for (int i = 0; i < alienCount; i++)
 			{
@@ -114,7 +122,7 @@ void BREAK()
 	sWidth = sWidth;
 }
 
-void InitializeGame(), MainMenu(), LoadGame(), GamePlay(), GameDraw(), HiScore(), Quit(), Unload();
+void SplashScreen(), MainMenu(), LoadGame(), ReloadGame(), GamePlay(), GameDraw(), HiScore(), Quit(), Unload();
 
 int MakeSprite(char *atext, int awidth, int aheight, int &asprites)
 {
@@ -148,6 +156,8 @@ bool Shoot()
 	return true;
 }
 
+float ReadF();
+void Write(float);
 
 void AlienSPlasmaCollision()
 {
@@ -163,7 +173,14 @@ void AlienSPlasmaCollision()
 					{
 						alienMark--;
 						if (alienMark == 0)
+						{
+							if (totalTime < ReadF())
+							{
+								newHi = true;
+								Write(totalTime);
+							}
 							totalTime = 0;
+						}
 						Alien[ii].active = false;
 					}
 				}
@@ -171,15 +188,77 @@ void AlienSPlasmaCollision()
 		}
 	}
 }
+
 void DrawUI()
 {
-	char a[10], b[10];
-	itoa(alienMark, a, 10);
-	itoa(alienCount, b, 10);
+	char a[10], b[10], c[30];
+	_itoa(alienMark, a, 10);
+	_itoa(alienCount, b, 10);
 	strcat(a, "/");
 	strcat(a, b);
 	DrawString(a, 0.1f * sWidth, 0.9f * sHeight, SColour(255, 255, 255, 255));
-	itoa(s1Lives, a, 10);
+	_itoa(s1Lives, a, 10);
+	_itoa(totalTime, c, 10);
+	//DrawString(c, 0.8f * sWidth, 0.9f * sHeight, SColour(255, 255, 255, 255));
 
+}
+
+void DrawNum(float a, float x, float y)
+{
+	char b[10];
+	_itoa(a, b, 10);
+	DrawString(b, x * sWidth, y * sHeight, SColour(255, 255, 255, 255));
+}
+
+void DrawChar(char *a, float x, float y)
+{
+	DrawString(a, x * sWidth, y * sHeight, SColour(255, 255, 255, 255));
+}
+
+//FILE I/O
+void Write(char writeme)//WRITING
+{
+	fstream fscores;
+	fscores.open("fscores.txt", ios_base::out);
+	fscores << writeme << " " << endl;
+	fscores.close();
+}
+
+void Write(char *writeme)//WRITING ARRAY OVERLOAD
+{
+	fstream fscores;
+	fscores.open("fscores.txt", ios_base::out);
+	fscores << writeme << " " << endl;
+	fscores.close();
+}
+
+void Write(float writeme)//WRITING FLOAT OVERLOAD
+{
+	fstream fscores;
+	fscores.open("fscores.txt", ios_base::out);
+	fscores << writeme << " " << endl;
+	fscores.close();
+}
+
+void DrawScore(float x, float y)//READING AS CHAR
+{
+	char ca[6];
+	fstream fscores;
+	fscores.open("fscores.txt", ios_base::in);
+	fscores.getline(ca, 6);
+	fscores.close();
+	DrawString(ca, x * sWidth, y * sHeight, SColour(255, 255, 255, 255));
+}
+
+float ReadF()//READING AS FLOAT
+{
+	char ca[6];
+	float fa;
+	fstream fscores;
+	fscores.open("fscores.txt", ios_base::in);
+	fscores.getline(ca, 6);
+	fscores.close();
+	fa = atoi(ca);
+	return fa;
 }
 #endif
