@@ -19,6 +19,8 @@ public:
 
 	//GETTING VALUES
 	float Length();
+	float Normal();
+	float Magnitude();
 };
 class Point2D		//POINT CLASS
 {
@@ -100,14 +102,24 @@ bool CheckCircleCircle(float ax, float ay, float ar, float bx, float by, float b
 
 bool CheckLineLine(Line l1, Line l2);				//NOT DONE YET BECAUSE NOT DONE YET
 
-bool CheckLineCircle(Circle a, Line seg);
+bool IsWithin(float anum, float amin, float amax);		//IF GIVEN NUMBER IS WITHIN GIVEN RANGE
 
 bool CheckBoxBox(Box b1, Box b2);		//BOX-BOX COLLISION - ONLY CHECKS POINTS NOT LINES
-
-bool IsWithin(float anum, float amin, float amax);		//IF GIVEN NUMBER IS WITHIN GIVEN RANGE
 
 float Distance(Point2D a, Point2D b);	//DISTANCE BETWEEN TWO POINTS
 
 float Distance(float ax, float ay, float bx, float by);		//DISTANCE OVERLOAD
+
+bool CheckPointCircle(Point2D p, Circle c);
+
+bool CheckPointCircle(float px, float py, float cx, float cy, float cr);
+
+bool CheckLineCircle(Circle a, Line seg);
+
+bool CheckLineCircle(float ax, float ay, float ar, float lx, float ly);
+
+
+
+
 
 #endif

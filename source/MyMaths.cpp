@@ -11,6 +11,15 @@ float Vector2D::Length()
 {
 	return sqrt((x * x) + (y * y));
 }
+float Vector2D::Magnitude()
+{
+	return (x * x) + (y * y);
+}
+float Vector2D::Normal()
+{
+	float a = ((x / Length())*(x / Length())) + ((y / Length())*(y / Length()));
+	return (sqrt(a));
+}
 //CONSTRUCTOR
 Vector2D::Vector2D()
 {
@@ -192,12 +201,21 @@ bool CheckPointBox(Point2D p, Box b)		//POINT-BOX COLLISION
 	return false;
 }
 
+bool CheckCircleCircle(Circle a, Circle b)	//COLLISION BETWEEN TWO CIRCLES
+{
+	return (a.r + b.r) > Distance(a.x, a.y, b.x, b.y);
+}
+
+bool CheckCircleCircle(float ax, float ay, float ar, float bx, float by, float br)	//CIRCLE CIRCLE OVERLOAD
+{
+	return (ar + br) > Distance(ax, ay, bx, by);
+}
+
 bool CheckLineLine(Line l1, Line l2)				//NOT DONE YET BECAUSE NOT DONE YET
 {
 
 	return false;
 }
-
 
 bool IsWithin(float anum, float amin, float amax)		//IF A GIVEN NUMBER IS BETWEEN TWO GIVEN NUMBERS
 {
@@ -220,25 +238,42 @@ float Distance(Point2D a, Point2D b)		//DISTANCE BETWEEN TWO POINTS
 
 float Distance(float ax, float ay, float bx, float by)
 {
+	if (((bx - ax) * (bx - ax)) + ((by - ay) * (by - ay)) == 0)
+		return 0;
 	return sqrt(((bx - ax) * (bx - ax)) + ((by - ay) * (by - ay)));
 }
 
-
-bool CheckCircleCircle(Circle a, Circle b)	//COLLISION BETWEEN TWO CIRCLES
+bool CheckPointCircle(Point2D p, Circle c)
 {
-	return (a.r + b.r) > Distance(a.x, a.y, b.x, b.y);
+	if (Distance(p.x, p.y, c.x, c.y) < c.r)
+		return true;
+	return false;
 }
 
-bool CheckCircleCircle(float ax, float ay, float ar, float bx, float by, float br)	//CIRCLE CIRCLE OVERLOAD
+bool CheckPointCircle(float px, float py, float cx, float cy, float cr)
 {
-	return (ar + br) > Distance(ax, ay, bx, by);
+	if (Distance(px, py, cx, cy) <= cr)
+		return true;
+	return false;
 }
 
 bool CheckLineCircle(Circle c, Line l)
 {
 	Vector2D v1(l.X2 - l.X1, l.Y2 - l.Y1);
 	Vector2D v2(c.x - l.X1, c.y - l.Y1);
-	float f = abs(Dot(v1, v2));
+
+	if (CheckPointCircle(l.Start(), c))
+		return true;
+	if (CheckPointCircle(l.End(), c))
+		return true;
+
+	Vector2D v3((Dot(v2, v1) / v1.Magnitude()) * v1.x, (Dot(v2, v1) / v1.Magnitude()) * v1.y);
+
+	if (v3.Length() > v1.Length())
+		return false;
+
+	if (CheckPointCircle(v3.x,v3.y,v2.x,v2.y,c.r))
+		return true;
 
 	return false;
 }

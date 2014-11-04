@@ -2,6 +2,7 @@
 
 int main( int argc, char* argv[] )
 {	
+
 	//INITILIZE FRAMEWORK
     Initialise(sWidth, sHeight, false, "shootmeup");
     SetBackgroundColour(SColour(0, 0, 0, 255));
@@ -104,7 +105,6 @@ void MainMenu()		//MAIN MENU
 
 void LoadGame()		//LOAD GAME FOR THE FIRST TIME
 {
-
 	newHi = false;
 	Player1.active = true;
 	Player1.SetPos(100, 100, 15);
