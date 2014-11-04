@@ -15,7 +15,7 @@ void Ship::SetKeys(int aUp, int aDown, int aLeft, int aRight, int aFire)
 
 void Ship::Update(KeyStater &aKeys, float aWidth, float aHeight)
 {
-	if (aKeys.IsPressed(bUp))
+	if (aKeys.IsPressed(bUp))		//HANDLING DIRECTIONAL INPUT
 		dir.y = 1;
 	if (aKeys.IsPressed(bDown))
 		dir.y = -1;
@@ -35,6 +35,8 @@ void Ship::Update(KeyStater &aKeys, float aWidth, float aHeight)
 		dir.y = 0;
 	if (aKeys.IsUp(bLeft) && aKeys.IsUp(bRight))
 		dir.x = 0;
+
+	//X AND Y DIRECTION LIMITS
 	if (!CheckPointBox(ForwardMove(), Box(0, (0.1 * aHeight), aWidth, (0.6 * aHeight))))
 	{
 		dir.y = 0;

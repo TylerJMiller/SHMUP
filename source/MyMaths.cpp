@@ -199,7 +199,7 @@ bool CheckLineLine(Line l1, Line l2)				//NOT DONE YET BECAUSE NOT DONE YET
 }
 
 
-bool IsWithin(float anum, float amin, float amax)
+bool IsWithin(float anum, float amin, float amax)		//IF A GIVEN NUMBER IS BETWEEN TWO GIVEN NUMBERS
 {
 	if (anum >= amin && anum <= amax)
 		return true;
@@ -213,7 +213,7 @@ bool CheckBoxBox(Box b1, Box b2)		//BOX-BOX COLLISION - AABB ONE WAY
 	return false;
 }
 
-float Distance(Point2D a, Point2D b)
+float Distance(Point2D a, Point2D b)		//DISTANCE BETWEEN TWO POINTS
 {
 	return (((b.x - a.x) * (b.x - a.x)) + ((b.y - a.y) * (b.y - a.y)));
 }
@@ -224,12 +224,12 @@ float Distance(float ax, float ay, float bx, float by)
 }
 
 
-bool CheckCircleCircle(Circle a, Circle b)
+bool CheckCircleCircle(Circle a, Circle b)	//COLLISION BETWEEN TWO CIRCLES
 {
 	return (a.r + b.r) > Distance(a.x, a.y, b.x, b.y);
 }
 
-bool CheckCircleCircle(float ax, float ay, float ar, float bx, float by, float br)
+bool CheckCircleCircle(float ax, float ay, float ar, float bx, float by, float br)	//CIRCLE CIRCLE OVERLOAD
 {
 	return (ar + br) > Distance(ax, ay, bx, by);
 }

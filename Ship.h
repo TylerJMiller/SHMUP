@@ -6,7 +6,7 @@
 class Ship : public Object
 {
 private:
-	int bUp, bDown, bLeft, bRight, bFire, bType;
+	int bUp, bDown, bLeft, bRight, bFire, bType;	//CONTROL BUTTON INTS
 public:
 	void Shoot();
 	void SetKeys(int aUp, int aDown, int aLeft, int aRight, int aFire);

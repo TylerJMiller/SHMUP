@@ -4,7 +4,7 @@
 class Bullet : public Object
 {
 public:
-	void Update(float aWidth, float aHeight);
+	void Update(float aWidth, float aHeight);	//BULLET UPDATE
 	Bullet();
 	~Bullet();
 };

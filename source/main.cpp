@@ -2,28 +2,33 @@
 
 int main( int argc, char* argv[] )
 {	
+	//INITILIZE FRAMEWORK
     Initialise(sWidth, sHeight, false, "shootmeup");
     SetBackgroundColour(SColour(0, 0, 0, 255));
     //Game Loop
     do
     {
+		//UPDATING GAMESTATE AND KEYSTATE
 		Game.Update();
 		Keys.Update();
+
+		//KEYSTATE DEBUG
 		Keys.Debug();
 		
+		//TIME SINCE LAST FRAME AND TIME SINCE LAST STATE CHANGE
 		frameTime = GetDeltaTime();
 		//frameTime = (1.f/300);
 		totalTime += frameTime;
 		
+		//DEBUG COMMANDS
 		if (Keys.IsPressed(VK_ESCAPE))
 			Game.ChangeState(UNLOAD);
-		
 		if (Keys.IsPressed(VK_P))
 			pause = !pause;
-
 		if (Keys.IsPressed(VK_TAB))
 			BREAK();
 
+		//GAMESTATE SWITCH
 		switch (Game.CurrentState)
 		{
 		case SPLASHSCREEN:
@@ -64,9 +69,9 @@ int main( int argc, char* argv[] )
     return 0;
 }
 
-void SplashScreen()
+void SplashScreen()		//SPLASH SCREEN
 {
-	if (Keys.IsPressed(VK_RETURN))
+	if (Keys.IsPressed(VK_RETURN))	//PRESS ENTER TO SKIP SPLASH SCREEN
 		totalTime = 5;
 	if (totalTime < 5)
 	{
@@ -78,7 +83,7 @@ void SplashScreen()
 	}
 }
 
-void MainMenu()
+void MainMenu()		//MAIN MENU
 {
 	DrawString("PRESS F TO PLAY", 0.25f * sWidth, 0.7f * sHeight, SColour(255, 255, 255, 255));
 	if (Keys.IsPressed(VK_F))
@@ -97,7 +102,7 @@ void MainMenu()
 		Game.ChangeState(QUIT);
 }
 
-void LoadGame()
+void LoadGame()		//LOAD GAME FOR THE FIRST TIME
 {
 
 	newHi = false;
@@ -126,6 +131,7 @@ void LoadGame()
 	Player4.SetKeys(VK_NUMPAD8, VK_NUMPAD5, VK_NUMPAD4, VK_NUMPAD6, VK_SPACE);
 	*/
 
+	
 	for (int i = 0; i < alienCount; i++)
 	{
 		Alien[i].active = true;
@@ -133,7 +139,6 @@ void LoadGame()
 		Alien[i].SetSpeed(100, 0, -1);
 		Alien[i].SetSprite(MakeSprite("./images/alien.png", 31, 31, spriteCount));
 	}
-
 	for (int i = 0; i < splasmaCount; i++)
 	{
 		SPlasma[i].active = false;
@@ -144,7 +149,7 @@ void LoadGame()
 	Game.ChangeState(GAMEPLAY);
 }
 
-void ReloadGame()
+void ReloadGame()		//RESET GAME STATE IF PLAYED ALREADY
 {
 	alienMark = alienCount;
 	newHi = false;
@@ -164,12 +169,14 @@ void ReloadGame()
 	Game.ChangeState(GAMEPLAY);
 }
 
-void GamePlay()
+void GamePlay()		//GAME LOGIC FUNCTION
 {
-	if (alienMark == 0)
+	if (alienMark == 0)		//IF THERE ARE ANY ALIENS LEFT - WIN/LOSE LOGIC OR 
 	{
-		if (totalTime < 10)
+		//WIN LOGIC
+		if (totalTime < 10)		
 		{
+			//WIN LOGIC
 			DrawNum(10 - totalTime, 0.5f, 0.5f);
 			DrawString("YOU ARE WINNER", 0.25f * sWidth, 0.8f * sHeight, SColour(255, 255, 255, 255));
 			if (newHi)
@@ -189,6 +196,7 @@ void GamePlay()
 	}
 	else if (s1Lives == 0)
 	{
+		//LOSE LOGIC
 		if (totalTime < 10)
 		{
 			DrawString("YOU ARE LOSE", 0.25f * sWidth, 0.7f * sHeight, SColour(255, 255, 255, 255));
@@ -246,7 +254,7 @@ void GamePlay()
 	}
 }
 
-void GameDraw()
+void GameDraw()		//GAME DRAW STATE
 {
 	Player1.Draw();								//PLAYER DRAW
 	/*
@@ -267,7 +275,7 @@ void GameDraw()
 		DrawNum(totalTime, 0.8f, 0.9f);
 }
 
-void HiScore()
+void HiScore()		//HI SCORE LOGIC
 {
 	DrawString("The current HiScore is ", 0.245f * sWidth, 0.5f * sHeight, SColour(255, 255, 255, 255));
 	DrawScore(0.6f, 0.5f);
@@ -276,25 +284,25 @@ void HiScore()
 		Game.ChangeState(MAINMENU);
 }
 
-void Quit()
+void Quit()		//QUIT GAME LOGIC
 {
 	if (Game.LastState == MAINMENU)
 	{
-		DrawChar("Quitting without playing", 0.3f, 0.6f);
+		DrawChar("Quitting from MAINMENU", 0.3f, 0.6f);
 		DrawNum(5 - totalTime, 0.5f, 0.5f);
 		if (totalTime > 5)
 			Game.ChangeState(UNLOAD);
 	}
 	else
 	{
-		DrawChar("Quitting after playing", 0.3f, 0.6f);
+		DrawChar("Quitting from GAMEPLAY", 0.3f, 0.6f);
 		DrawNum(5 - totalTime, 0.5f, 0.5f);
 		if (totalTime > 5)
 			Game.ChangeState(UNLOAD);
 	}
 }
 
-void Unload()
+void Unload()		//UNLOAD THE GAME AND EXIT
 {
 	Shutdown();
 }

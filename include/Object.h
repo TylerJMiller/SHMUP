@@ -2,6 +2,8 @@
 #define OBJECT_H
 #include "MyMaths.h"
 
+//GENERIC OBJECT CLASS
+
 class Object
 {
 public:
@@ -11,12 +13,12 @@ public:
 	bool active;
 	Vector2D dir;
 
-	void SetPos(float ax, float ay, float ar);
-	void SetSpeed(float as, float axdir, float aydir);
-	void SetSprite(int asprite);
-	void Move(float atime);
+	void SetPos(float ax, float ay, float ar);	//POSITION AND RADIUS SETTER
+	void SetSpeed(float as, float axdir, float aydir);	//SPEED SETTER
+	void SetSprite(int asprite);	//SPRITE SETTER
+	void Move(float atime);	//MOVEMENT FUNCITON
 	Point2D ForwardMove();	//RETURNS POSITION NEXT FRAME
-	void Draw();
+	void Draw();	//DRAW FUNCTION
 	Object();
 	~Object();
 };

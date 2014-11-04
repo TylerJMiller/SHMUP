@@ -3,13 +3,14 @@
 
 KeyStater::KeyStater()
 {
+	//INITILIZES CURRENT AND LAST KEYBOARD STATE ON DECLARATION
 	GetKeyboardState(curStates);
 	for (int i = 0; i < 256; i++)
 	{
-		oldStates[i] = curStates[i];
+		oldStates[i] = curStates[i];	
 	}
-	GetCursorPos(&curs);
-	ScreenToClient(thiswindow, &curs);
+	GetCursorPos(&curs);	//CURSOR POSITION ON SCREEN
+	ScreenToClient(thiswindow, &curs);	//CURSOR POSITION IN RELATION TO GAME WINDOW
 }
 
 
@@ -17,7 +18,7 @@ KeyStater::~KeyStater()
 {
 }
 
-void KeyStater::Update()
+void KeyStater::Update()	//REFRESHING KEYSTATES AND MOUSE POSITION
 {
 	for (int i = 0; i < 256; i++)
 	{
@@ -27,7 +28,7 @@ void KeyStater::Update()
 	GetCursorPos(&curs);
 	ScreenToClient(thiswindow, &curs);
 }
-void KeyStater::Debug()
+void KeyStater::Debug()		//DRAWS CURSTATE ON SCREEN IF F5 IS TOGGLED
 {
 	if (IsPressed(VK_F5))
 		showDebug = !showDebug;
@@ -45,31 +46,32 @@ void KeyStater::Debug()
 		}
 	}
 }
-bool KeyStater::IsUp(int key)
+
+bool KeyStater::IsUp(int key)	//IF A KEY IS NEUTRAL
 {
 	if (curStates[key] < 2 && oldStates[key] < 2)
 		return true;
 	return false;
 }
-bool KeyStater::IsDown(int key)
+bool KeyStater::IsDown(int key)	//IF A KEY IS HELD DOWN
 {
 	if (curStates[key] > 2 && oldStates[key] > 2)
 		return true;
 	return false;
 }
-bool KeyStater::IsToggledOn(int key)
+bool KeyStater::IsToggledOn(int key)	//IF A KEY IS TOGGLED
 {
 	if (curStates[key] == 1)
 		return true;
 	return false;
 }
-bool KeyStater::IsPressed(int key)
+bool KeyStater::IsPressed(int key)	//IF A KEY HAS BEEN PRESSED SINCE LAST FRAME
 {
 	if (curStates[key] > 2 && oldStates[key] < 2)
 		return true;
 	return false;
 }
-bool KeyStater::IsReleased(int key)
+bool KeyStater::IsReleased(int key)	//IF A KEY HAS BEEN RELEASED SINCE LAST FRAME
 {
 	if (curStates[key] < 2 && oldStates[key] > 2)
 		return true;

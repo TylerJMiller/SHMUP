@@ -4,7 +4,7 @@
 class Enemy : public Object
 {
 public:
-	void Update(float aWidth, float aHeight);
+	void Update(float aWidth, float aHeight);	//ENEMY UPDATE LOOP
 	Enemy();
 	~Enemy();
 };

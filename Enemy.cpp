@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
 
-void Enemy::Update(float aWidth, float aHeight)
+void Enemy::Update(float aWidth, float aHeight)	//ENEMY UPDATE LOOP
 {
 	if (active)
 	{

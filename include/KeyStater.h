@@ -5,6 +5,7 @@
 #include "AIE.h"
 #include "MyMaths.h"
 
+//DEFINING VIRTUAL KEYS
 #define VK_0 0x30
 #define VK_1 0x31
 #define VK_2 0x32
@@ -47,19 +48,18 @@ class KeyStater
 private:
 	BYTE curStates[258], oldStates[256];
 	bool showDebug = false;
-	HWND thiswindow = GetForegroundWindow();
+	HWND thiswindow = GetForegroundWindow();	//WINDOW RELEVANT TO CURSOR POSITION
 public:
-	POINT curs;
+	POINT curs;	//CURSOR POSITION
 	KeyStater();
 	~KeyStater();
-	void Update();
-	void Debug();
-	void ToggleDebug();
-	bool IsUp(int key);
-	bool IsDown(int key);
-	bool IsToggledOn(int key);
-	bool IsPressed(int key);
-	bool IsReleased(int key);
+	void Update();	//
+	void Debug();	//DRAWS CURSTATE ON SCREEN IF F5 IS TOGGLED
+	bool IsUp(int key);	//IF A KEY IS NEUTRAL
+	bool IsDown(int key);	//IF A KEY IS HELD DOWN
+	bool IsToggledOn(int key);	//IF A KEY IS TOGGLED
+	bool IsPressed(int key);	//IF A KEY HAS BEEN PRESSED SINCE LAST FRAME
+	bool IsReleased(int key);	//IF A KEY HAS BEEN RELEASED SINCE LAST FRAME
 };
 
 

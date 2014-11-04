@@ -32,7 +32,7 @@ public:
 	void Set(float ax, float ay);
 };
 
-class Circle
+class Circle	//CIRCLE CLASS
 {
 public:
 	float x;
@@ -94,19 +94,19 @@ public:
 float Dot(Vector2D a, Vector2D b);		//DOT PRODUCT OF TWO VECTORS
 
 bool CheckPointBox(Point2D p, Box b);		//POINT-BOX COLLISION
+	
+bool CheckCircleCircle(Circle a, Circle b);		//CIRCLE-CIRCLE COLLISION
 
-bool CheckCircleCircle(Circle a, Circle b);
-
-bool CheckCircleCircle(float ax, float ay, float ar, float bx, float by, float br);
+bool CheckCircleCircle(float ax, float ay, float ar, float bx, float by, float br);		//CIRCLE-CIRCLE OVERLOAD
 
 bool CheckLineLine(Line l1, Line l2);				//NOT DONE YET BECAUSE NOT DONE YET
 
 bool CheckBoxBox(Box b1, Box b2);		//BOX-BOX COLLISION - ONLY CHECKS POINTS NOT LINES
 
-bool IsWithin(float anum, float amin, float amax);
+bool IsWithin(float anum, float amin, float amax);		//IF GIVEN NUMBER IS WITHIN GIVEN RANGE
 
-float Distance(Point2D a, Point2D b);
+float Distance(Point2D a, Point2D b);	//DISTANCE BETWEEN TWO POINTS
 
-float Distance(float ax, float ay, float bx, float by);
+float Distance(float ax, float ay, float bx, float by);		//DISTANCE OVERLOAD
 
 #endif
