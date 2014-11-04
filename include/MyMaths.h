@@ -45,12 +45,11 @@ public:
 
 class Line		//LINE CLASS
 {
-private:
+public:
 	float X1;
 	float Y1;
 	float X2;
 	float Y2;
-public:
 	//CONSTRUCTORS
 	Line();
 	Line(Point2D, Point2D);
@@ -100,6 +99,8 @@ bool CheckCircleCircle(Circle a, Circle b);		//CIRCLE-CIRCLE COLLISION
 bool CheckCircleCircle(float ax, float ay, float ar, float bx, float by, float br);		//CIRCLE-CIRCLE OVERLOAD
 
 bool CheckLineLine(Line l1, Line l2);				//NOT DONE YET BECAUSE NOT DONE YET
+
+bool CheckLineCircle(Circle a, Line seg);
 
 bool CheckBoxBox(Box b1, Box b2);		//BOX-BOX COLLISION - ONLY CHECKS POINTS NOT LINES
 

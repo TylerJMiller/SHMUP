@@ -233,3 +233,12 @@ bool CheckCircleCircle(float ax, float ay, float ar, float bx, float by, float b
 {
 	return (ar + br) > Distance(ax, ay, bx, by);
 }
+
+bool CheckLineCircle(Circle c, Line l)
+{
+	Vector2D v1(l.X2 - l.X1, l.Y2 - l.Y1);
+	Vector2D v2(c.x - l.X1, c.y - l.Y1);
+	float f = abs(Dot(v1, v2));
+
+	return false;
+}
