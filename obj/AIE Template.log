@@ -1,4 +1,4 @@
-﻿Build started 11/3/2014 4:05:22 PM.
+﻿Build started 11/3/2014 5:22:36 PM.
      1>Project "C:\Users\tyler.miller\Desktop\SHMUP\AIE Template.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I./ /I./include/ /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"obj\\" /Fd"obj\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt source\main.cpp
@@ -30,16 +30,16 @@
      1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(88): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(96): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(100): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(181): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(184): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(187): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(202): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(203): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(215): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(224): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(229): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(280): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(282): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(190): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(193): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(208): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(209): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(221): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(230): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(235): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(286): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tyler.miller\desktop\shmup\source\main.cpp(288): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"bin\AIE Template_d.exe" /INCREMENTAL /NOLOGO /LIBPATH:./libs AIE_1st_Year_Framework_d.lib kernel32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"bin\AIE Template_d.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"bin\AIE Template_d.lib" /MACHINE:X86 obj\Bullet.obj
          obj\Enemy.obj
@@ -81,4 +81,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.66
+Time Elapsed 00:00:01.71

@@ -152,6 +152,13 @@ void LoadGame()		//LOAD GAME FOR THE FIRST TIME
 void ReloadGame()		//RESET GAME STATE IF PLAYED ALREADY
 {
 	alienMark = alienCount;
+	s1Lives = 3;
+	/*
+	s2Lives = 3;
+	s3Lives = 3;
+	s4Lives = 3;
+	*/
+
 	newHi = false;
 	Player1.SetPos(100, 100, 15);
 
@@ -176,7 +183,6 @@ void GamePlay()		//GAME LOGIC FUNCTION
 		//WIN LOGIC
 		if (totalTime < 10)		
 		{
-			//WIN LOGIC
 			DrawNum(10 - totalTime, 0.5f, 0.5f);
 			DrawString("YOU ARE WINNER", 0.25f * sWidth, 0.8f * sHeight, SColour(255, 255, 255, 255));
 			if (newHi)
