@@ -28,6 +28,7 @@ enum GAMESTATE
 
 float frameTime = 0;	//TIME SINCE LAST FRAME
 float totalTime = 0;	//TIME SINCE LAST STATE CHANGE/TIME RESET
+KeyStater Keys;
 
 struct GameStateHandler	//HANDLER FOR GAME STATES
 {
@@ -39,6 +40,17 @@ struct GameStateHandler	//HANDLER FOR GAME STATES
 	{
 		CurrentState = aState;
 		LastState = CurrentState;
+	}
+
+	void IfChange(int akey, GAMESTATE aState)
+	{
+		if (Keys.IsPressed(akey))
+		{
+			totalTime = 0;
+			hasChanged = true;
+			LastState = CurrentState;
+			CurrentState = aState;
+		}
 	}
 
 	void ChangeState(GAMESTATE aState)	//STATE CHANGE - SETS LAST STATE AND RESETS TIME
@@ -81,7 +93,6 @@ int alienMark = alienCount;
 
 //DECLARING STRUCTS/CLASSES
 GameStateHandler Game(SPLASHSCREEN);
-KeyStater Keys;
 Bullet SPlasma[splasmaCount];
 Enemy Alien[alienCount];
 Ship Player1;

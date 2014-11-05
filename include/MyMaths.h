@@ -11,10 +11,11 @@ public:
 	void Set(float ax, float ay);
 
 	//OVERLOADS
-	Vector2D operator=(Vector2D &a)
+	Vector2D* operator=(Vector2D &a)
 	{
-		Vector2D temp(a.x, a.y);
-		return temp;
+		x = a.x;
+		y = a.y;
+		return new Vector2D(x, y);
 	}
 
 	//GETTING VALUES

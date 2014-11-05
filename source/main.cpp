@@ -2,6 +2,9 @@
 
 int main( int argc, char* argv[] )
 {	
+		Vector2D temp1(1, 1);
+		Vector2D temp2(3, 3);
+		temp1 = temp2;
 
 	//INITILIZE FRAMEWORK
     Initialise(sWidth, sHeight, false, "shootmeup");
@@ -22,8 +25,7 @@ int main( int argc, char* argv[] )
 		totalTime += frameTime;
 		
 		//DEBUG COMMANDS
-		if (Keys.IsPressed(VK_ESCAPE))
-			Game.ChangeState(UNLOAD);
+		Game.IfChange(VK_ESCAPE, UNLOAD);
 		if (Keys.IsPressed(VK_P))
 			pause = !pause;
 		if (Keys.IsPressed(VK_TAB))
@@ -95,12 +97,9 @@ void MainMenu()		//MAIN MENU
 			Game.ChangeState(RELOADGAME);
 	}
 	DrawString("PRESS G TO HISCORES", 0.25f * sWidth, 0.5f * sHeight, SColour(255, 255, 255, 255));
-	if (Keys.IsPressed(VK_G))
-		Game.ChangeState(HISCORE);
-
+	Game.IfChange(VK_G, HISCORE);
 	DrawString("PRESS H TO QUIT", 0.25f * sWidth, 0.3f * sHeight, SColour(255, 255, 255, 255));
-	if (Keys.IsPressed(VK_H))
-		Game.ChangeState(QUIT);
+	Game.IfChange(VK_H, QUIT);
 }
 
 void LoadGame()		//LOAD GAME FOR THE FIRST TIME
@@ -191,8 +190,7 @@ void GamePlay()		//GAME LOGIC FUNCTION
 				DrawScore(0.495f, 0.7f);
 			}
 			DrawString("Press F to MAINMENU", 0.25f * sWidth, 0.6f * sHeight, SColour(255, 255, 255, 255));
-			if (Keys.IsPressed(VK_F))
-				Game.ChangeState(MAINMENU);
+			Game.IfChange(VK_F, MAINMENU);
 			//DrawString("DEBUG", 0.25f * sWidth, 0.8f * sHeight, SColour(255, 255, 255, 255));
 		}
 		else
@@ -208,8 +206,7 @@ void GamePlay()		//GAME LOGIC FUNCTION
 			DrawString("YOU ARE LOSE", 0.25f * sWidth, 0.7f * sHeight, SColour(255, 255, 255, 255));
 			DrawString("Press F to MAINMENU", 0.25f * sWidth, 0.6f * sHeight, SColour(255, 255, 255, 255));
 			DrawNum(10 - totalTime, 0.5f, 0.5f);
-			if (Keys.IsPressed(VK_F))
-				Game.ChangeState(MAINMENU);
+			Game.IfChange(VK_F, MAINMENU);
 		}
 		else
 		{
@@ -286,8 +283,7 @@ void HiScore()		//HI SCORE LOGIC
 	DrawString("The current HiScore is ", 0.245f * sWidth, 0.5f * sHeight, SColour(255, 255, 255, 255));
 	DrawScore(0.6f, 0.5f);
 	DrawString("Press G to return", 0.4f * sWidth, 0.3f * sHeight, SColour(255, 255, 255, 255));
-	if (Keys.IsPressed(VK_G))
-		Game.ChangeState(MAINMENU);
+	Game.IfChange(VK_G, MAINMENU);
 }
 
 void Quit()		//QUIT GAME LOGIC

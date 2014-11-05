@@ -259,14 +259,13 @@ bool CheckPointCircle(float px, float py, float cx, float cy, float cr)
 
 bool CheckLineCircle(Circle c, Line l)
 {
-	Vector2D v1(l.X2 - l.X1, l.Y2 - l.Y1);
-	Vector2D v2(c.x - l.X1, c.y - l.Y1);
-
 	if (CheckPointCircle(l.Start(), c))
 		return true;
 	if (CheckPointCircle(l.End(), c))
 		return true;
 
+	Vector2D v1(l.X2 - l.X1, l.Y2 - l.Y1);
+	Vector2D v2(c.x - l.X1, c.y - l.Y1);
 	Vector2D v3((Dot(v2, v1) / v1.Magnitude()) * v1.x, (Dot(v2, v1) / v1.Magnitude()) * v1.y);
 
 	if (v3.Length() > v1.Length())
