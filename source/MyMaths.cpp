@@ -9,6 +9,8 @@ void Vector2D::Set(float ax, float ay)
 }
 float Vector2D::Length()
 {
+	if (x == 0 && y == 0)
+		return 0;
 	return sqrt((x * x) + (y * y));
 }
 float Vector2D::Magnitude()
@@ -17,8 +19,10 @@ float Vector2D::Magnitude()
 }
 float Vector2D::Normal()
 {
-	float a = ((x / Length())*(x / Length())) + ((y / Length())*(y / Length()));
-	return (sqrt(a));
+	if (Length() == 0)
+		return 0;
+
+	return sqrt((x / Length())*(x / Length())) + ((y / Length())*(y / Length()));
 }
 //CONSTRUCTOR
 Vector2D::Vector2D()
@@ -90,20 +94,22 @@ float Line::LengthY()
 {
 	return (Y2 - Y1);
 }
+void Vector2D::operator=(Vector2D &a)
+{
+	x = a.x;
+	y = a.y;
+}
 Vector2D Line::GetVector()
 {
-	Vector2D v(LengthX(), LengthY());
-	return v;
+	return Vector2D(LengthX(), LengthY());
 }
 Point2D Line::Start()
 {
-	Point2D v(X1, Y1);
-	return v;
+	return Point2D(X1, Y1);
 }
 Point2D Line::End()
 {
-	Point2D v(X2, Y2);
-	return v;
+	return Point2D(X2, Y2);
 }
 //CONSTRUCTOR
 Line::Line(Point2D a_point1, Point2D a_point2)
@@ -117,43 +123,35 @@ Line::Line(Point2D a_point1, Point2D a_point2)
 										//BOX
 Point2D Box::GetLeftBot()
 {
-	Point2D p(X1, Y1);
-	return p;
+	return Point2D(X1, Y1);
 }
 Point2D Box::GetLeftTop()
 {
-	Point2D p(X1, Y2);
-	return p;
+	return Point2D(X1, Y2);
 }
 Point2D Box::GetRightBot()
 {
-	Point2D p(X2, Y1);
-	return p;
+	return Point2D(X2, Y1);
 }
 Point2D Box::GetRightTop()
 {
-	Point2D p(X2, Y2);
-	return p;
+	return Point2D(X2, Y2);
 }
 Line Box::GetBotLine()
 {
-	Line l(GetLeftBot(), GetRightBot());
-	return l;
+	return Line(GetLeftBot(), GetRightBot());
 }
 Line Box::GetRightLine()
 {
-	Line l(GetRightBot(), GetRightTop());
-	return l;
+	return Line(GetRightBot(), GetRightTop());
 }
 Line Box::GetTopLine()
 {
-	Line l(GetRightTop(), GetLeftTop());
-	return l;
+	return Line(GetRightTop(), GetLeftTop());
 }
 Line Box::GetLeftLine()
 {
-	Line l(GetLeftTop(), GetLeftBot());
-	return l;
+	return Line(GetLeftTop(), GetLeftBot());
 }
 void Box::Set(float ax, float ay, float ax2, float ay2)
 {

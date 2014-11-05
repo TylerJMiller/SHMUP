@@ -6,6 +6,8 @@ int main( int argc, char* argv[] )
 		Vector2D temp2(3, 3);
 		temp1 = temp2;
 
+		Vector2D temp = Vector2D(1, 1);
+
 	//INITILIZE FRAMEWORK
     Initialise(sWidth, sHeight, false, "shootmeup");
     SetBackgroundColour(SColour(0, 0, 0, 255));
