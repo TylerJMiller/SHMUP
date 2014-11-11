@@ -34,6 +34,43 @@ Vector2D::Vector2D(float ax, float ay)
 	y = ay;
 }
 
+//VECTOR3D
+void Vector3D::Set(float ax, float ay,float az)
+{
+	x = ax;
+	y = ay;
+}
+float Vector3D::Length()
+{
+	if (x == 0 && y == 0)
+		return z;
+	float xy = sqrt((x * x) + (y * y));
+	return sqrt((xy * xy) + (z * z));
+}
+float Vector3D::Magnitude()
+{
+	return (x * x) + (y * y);
+}
+float Vector3D::Normal()
+{
+	if (Length() == 0)
+		return 0;
+
+	return sqrt((x / Length())*(x / Length())) + ((y / Length())*(y / Length()));
+}
+
+//CONSTRUCTOR
+Vector3D::Vector3D()
+{
+}
+Vector3D::Vector3D(float ax, float ay, float az)
+{
+	x = ax;
+	y = ay;
+	z = az;
+}
+
+
 										//POINT
 void Point2D::Set(float ax, float ay)
 {

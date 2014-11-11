@@ -18,6 +18,28 @@ public:
 	float Normal();
 	float Magnitude();
 };
+
+class Vector3D		//VECTOR CLASS
+{
+public:
+	float x;
+	float y;
+	float z;
+	//DECLARING DEFAULTS AND OVERLOADS
+	Vector3D();
+	Vector3D(float, float, float);
+	void Set(float ax, float ay, float az);
+
+	//OVERLOADS
+	void operator=(Vector3D &a);
+
+	//GETTING VALUES
+	float Length();
+	float Normal();
+	float Magnitude();
+};
+
+
 class Point2D		//POINT CLASS
 {
 public:
